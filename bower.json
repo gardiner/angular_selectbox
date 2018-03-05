@@ -1,0 +1,22 @@
+{
+  "name": "angular_selectbox",
+  "authors": [
+    "Ole Trenner <ole.trenner@3dbits.de>"
+  ],
+  "version": "0.0.1",
+  "description": "angular.js dropdown/select for single-select and multi-select",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.5.7",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.2.1",
+    "lodash": "^4.17.4"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

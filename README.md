@@ -1,0 +1,1 @@
+angular.js select/multiselect component

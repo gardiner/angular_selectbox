@@ -1,0 +1,43 @@
+!!!
+%html(xmlns="http://www.w3.org/1999/xhtml" lang="de")
+    %head
+        %link(href="demo.css" rel="stylesheet" type="text/css")
+        %script(type="text/javascript" src="../bower_components/angular/angular.js")
+        %script(type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js")
+        %script(type="text/javascript" src="../dist/angular_selectbox.js")
+        %title Angular Selectbox Demo
+        :javascript
+            angular.module('app', ['angular-selectbox'])
+            .controller('main', ['$scope', function($scope) {
+                "use strict";
+
+                $scope.single1 = null;
+                $scope.single2 = null;
+                $scope.multiple = [];
+                $scope.continents = [
+                    {name: 'Antarctica'},
+                    {name: 'Asia'},
+                    {name: 'Australia'},
+                    {name: 'Europe'},
+                    {name: 'North America'},
+                    {name: 'South America'}
+                ];
+            }]);
+
+    %body
+        #demo(ng-app="app" ng-controller="main")
+            %h2 Styled output
+            %selectbox.pretty(multiple="multiple" candidates="continents" label="name" model="multiple" placeholder="Select Multiple...")
+
+            %h2 Single Select
+            %selectbox(candidates="continents" label="name" model="single1" placeholder="Select...")
+            %pre {{single1 |json}}
+
+            %h2 Multi Select
+            %selectbox(multiple="multiple" candidates="continents" label="name" model="multiple" placeholder="Select Multiple...")
+            %pre {{multiple |json}}
+
+            %h2 Add new options
+            %selectbox(multiple="multiple" add="continents.push(v={name: $value}); multiple.push(v);" candidates="continents" label="name" model="multiple" placeholder="Select...")
+            %pre {{multiple |json}}
+

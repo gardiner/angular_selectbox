@@ -1,0 +1,16 @@
+.selectbox
+    .inputframe(ng-click="activate($event)" ng-focus="activate($event)" tabindex="0")
+        %span.value(ng-repeat="item in value" tabindex="-1")
+            .icon.clear.active(ng-click="unset_value(item, $event)")
+            {{ pretty(item) }}
+        %span.placeholder(ng-show="!value.length") {{ is_open ? '&nbsp;' : placeholder }}
+
+    .candidates(ng-show="is_open")
+        .input
+            %input(type="text" ng-keydown="keydown($event)" ng-model="input" autocomplete="off")
+        .icon.add(ng-class="{active: is_add_visible && input}" ng-click="add_candidate()")
+        .icon.clear(ng-class="{active: input}" ng-click="close()")
+
+        %ul(ng-show="filtered_candidates.length > 0")
+            %li(ng-repeat="c in filtered_candidates" ng-class="{selected: is_selected(c), active: (current === $index)}" ng-mouseenter="set_current($index)" ng-click="select()" title="{{pretty(c)}}")
+                {{ pretty(c) }}
