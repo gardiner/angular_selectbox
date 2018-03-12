@@ -22,7 +22,6 @@ angular.module('angular-selectbox', [])
                     if (evt.type == 'click') {
                         scope.$apply();
                     }
-                    return false;
                 }
             });
 
