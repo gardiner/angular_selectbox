@@ -198,7 +198,7 @@ angular.module('angular-selectbox', [])
             };
 
 
-            scope.$watch('input', function() {
+            scope.$watchGroup(['candidates', 'input'], function() {
                 scope.filtered_candidates = [];
                 if (scope.input) {
                     angular.forEach(scope.candidates, function(c) {
